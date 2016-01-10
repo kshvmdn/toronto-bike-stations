@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.css">
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ1OB5eiN-7e3FCxF_yc0dhJlcPdXKHhw&signed_in=true&callback=initMap"></script>
+		<style>
+			html, body, #map-canvas {
+				margin: 0;
+				padding: 0;
+				height: 100%;
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="map-canvas"></div>
+		<script>
+		function initMap() {
+			var toronto = {lat: 43.7184034, lng: -79.51848443};
+
+			var map = new google.maps.Map(document.getElementById('map-canvas'), {
+				zoom: 12,
+				center: toronto
+			});
+
+			var bikeStations = <%-JSON.stringify(bike_data)%>;
+		}
+		</script>
+	</body>
+</html>
