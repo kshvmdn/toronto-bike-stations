@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
-		<title><%= title %></title>
-		<link rel='stylesheet' href='/stylesheets/style.css' />
-		<link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.css">
+		<% include partials/head %>
 	</head>
 	<body>
-		<h1><%= title %></h1>
-		<p class="lead">Visit <a href="map"><code>/map</code></a> to see bike stations.</p>
+		<div class="container">
+			<h1><%= title %></h1>
+			<p class="lead">Visit <a href="map"><code>/map</code></a> to see bike stations.</p>
+			<p class="lead">This is an open source project, contribute <a href="http://github.com/kshvmdn/toronto-bike-stations" target="_blank">here</a>.</p>
+		</div>
 	</body>
 </html>
