@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
-		<title><%= title %></title>
-		<link rel='stylesheet' href='/stylesheets/style.css' />
-		<link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.css">
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ1OB5eiN-7e3FCxF_yc0dhJlcPdXKHhw&signed_in=true&callback=initMap"></script>
+		<% include partials/head %>
 		<style>
-			html, body, #map-canvas {
+			body, html, #map-canvas {
 				margin: 0;
 				padding: 0;
 				height: 100%;
@@ -17,16 +14,30 @@
 	<body>
 		<div id="map-canvas"></div>
 		<script>
-		function initMap() {
-			var toronto = {lat: 43.7184034, lng: -79.51848443};
-
-			var map = new google.maps.Map(document.getElementById('map-canvas'), {
-				zoom: 12,
-				center: toronto
-			});
-
-			var bikeStations = <%-JSON.stringify(bike_data)%>;
-		}
+			function initMap() {
+				var uoft = {lat: 43.6628956, lng: -79.3978504};
+				var map = new google.maps.Map(document.getElementById('map-canvas'), {
+					zoom: 15,
+					center: uoft
+				});
+				var data = <%- JSON.stringify(bike_data) %>;
+				data.stationBeanList.forEach(function(station, index, array) {
+					if (station.statusKey == 1 && !station.testStation) {
+						var marker = new google.maps.Marker({
+							position: {
+								lat: station.latitude,
+								lng: station.longitude
+							},
+							label: String(station.availableBikes),
+							map: map,
+							title: station.stationName,
+							opacity: 0.8
+						});
+					}
+				});
+				console.log('Last updated ' + data.executionTime);
+			}
 		</script>
+		<script async defer src='https://maps.googleapis.com/maps/api/js?key=<%= api_key %>&signed_in=true&callback=initMap'></script>
 	</body>
 </html>
