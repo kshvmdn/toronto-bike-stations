@@ -1,0 +1,24 @@
+{
+  "name": "toronto-bike-stations",
+  "description": "A web app to map available bike stations in the Toronto region.",
+  "main": "app.js",
+  "authors": [
+    "Kashav Madan <kshvmdn@gmail.com>"
+  ],
+  "license": "Apache",
+  "homepage": "https://github.com/kshvmdn/toronto-bike-stations",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "angular": "~1.4.8"
+  }
+}
