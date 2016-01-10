@@ -7,8 +7,8 @@ router.get('/', function(req, res, next) {
     if (!error & response.statusCode == 200) {
       data = JSON.parse(body);
     }
-    console.log(data);
-    res.render('map', {title: 'Map', bike_data: data});
+    api_key = process.argv[2];
+    res.render('map', {title: 'Map', api_key: api_key, bike_data: data});
   })
 });
 
